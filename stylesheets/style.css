@@ -1,0 +1,98 @@
+body {
+  padding: 50px;
+  font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/background.png");
+}
+
+.header {
+	display: flex;
+	justify-content: flex-end;
+	padding: 10px 0;
+}
+
+.header_img {
+    border-radius: 5px;
+}
+
+.primary_heading {
+    font-size: 26px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.secondary_heading {
+    font-size: 14px;
+    width: 60%;
+    padding: 5px 0 5px 0;
+    font-weight: bold;
+}
+
+.subtitle_gray {
+	color: gray;
+	padding: 5px 0;
+}
+
+.main {
+	padding: 20px 40px;
+	background-color: white;
+	border: 1px solid #cec7c7;
+	border-radius: 4px;
+}
+
+.main_text {
+    margin-bottom: 1em;
+    line-height: 1.4em;
+}
+
+.main_form {
+	padding: 5px 0;
+	display: flex;
+	justify content: flex-end;
+}
+
+.main_form label {
+	font-weight: bold;
+	width: 150px;	
+	padding: 0 8px;
+	display: inline-block;
+	text-align: right;
+	float: left;
+	clear: left;
+}
+
+.main_label input {
+	padding: 0 5px 0 0;
+	display: inline-block;
+	float: left;
+}
+
+.main_text a {
+	color: red;
+}
+
+.main_text a:visited {
+	color: #9c2222;
+}
+
+.main_link {
+	display: flex;
+	justify-content: flex-end;
+	font: 8px;
+	padding: 40px 0 0;
+	font-weight: bold;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+.footer {
+	padding: 30px;
+	text-align: center;
+}
+
+.footer a {
+	font-weight: bold;
+	color: black;
+}
