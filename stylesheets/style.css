@@ -96,3 +96,43 @@ body {
 	font-weight: bold;
 	color: black;
 }
+
+@media screen and (max-width: 500px) { /* mobile phones */
+	
+	body {
+		padding: 20px;
+		font: 12px;
+	}
+	
+	.main {
+		padding: 10px 30px;
+	}
+	
+	.secondary_heading {
+	    width: 100%;
+	}
+	
+	input {
+		outline-style: solid;
+		outline-width: 0.5px;
+	}
+
+	.footer {
+	padding: 10px;
+	}
+
+}
+
+@media screen and (max-width: 820px) {  /* tablets */
+    
+    .main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    input {
+		outline-style: solid;
+		outline-width: 0.5px;
+	}
+}
