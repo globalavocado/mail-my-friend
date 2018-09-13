@@ -52,7 +52,7 @@ body {
 
 .main_form label {
 	font-weight: bold;
-	width: 150px;	
+	width: 350px;	
 	padding: 0 8px;
 	display: inline-block;
 	text-align: right;
@@ -96,6 +96,7 @@ body {
 	font-weight: bold;
 	color: black;
 }
+
 
 @media screen and (max-width: 500px) { /* mobile phones */
 	
