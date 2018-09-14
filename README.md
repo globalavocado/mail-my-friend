@@ -2,10 +2,18 @@
 
 *tell-a-friend form emailer, that also writes the submitted data to the database.*
 
-### specification
+## specification
+#### done
 - a front-end made to good standards (mobile responsiveness, accessibility etc.)
-- a form that lets a visitor enter a friend's details in order to send the friend an email with the URL of the site.
-- the visitor's name & email, as well as the friend's name & email are also written to a database.
+- a form lets a visitor enter a friend's details
+- the form does not allow for empty fields or invalid characters (name field only)
+- both the visitor's and the friend's names & email addresses are written to the database
+- the form has a button to clear the fields before sending, and a link to clear the fields which appears after submission
+
+#### to do
+*- display error message when trying to submit invalid email addresses*
+
+*- on form submission, an email is sent out on behalf of the visitor, containing the site's URL*
 
 ## technologies used:
 
