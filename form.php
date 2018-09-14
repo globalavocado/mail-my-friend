@@ -169,7 +169,7 @@ else
     echo $friendsemail;
     echo "<br>";
     echo "<br>";
-    echo "<p>Puoi tornare indietro e inviare un altro amico, se lo desideri.</p>";
+    print 'Puoi <a href="'. $_SERVER['PHP_SELF'] .'">ripristinare il modulo e inviare un altro amico / una altra amica</a>, se lo desideri.';
 
   }
 } 
