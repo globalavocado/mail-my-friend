@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $customeremail = form_input($_POST["customeremail"]);
      // check if e-mail address is well-formed
-    if (!filter_var($customeremail, FILTER_VALIDATE_EMAIL)) {
-      $customeremailErr = "inserisci un indirizzo e-mail valido";
-    }
+    // if (!filter_var($customeremail, FILTER_VALIDATE_EMAIL)) {
+    //   $customeremailErr = "inserisci un indirizzo e-mail valido";
+    // }
   }
 
 if (empty($_POST["friendsname"])) {
@@ -44,9 +44,9 @@ if (empty($_POST["friendsemail"])) {
   } else {
     $friendsemail = form_input($_POST["friendsemail"]);
     // check if e-mail address is well-formed
-    if (!filter_var($friendsemail, FILTER_VALIDATE_EMAIL)) {
-      $friendsemailErr = "inserisci un indirizzo e-mail valido";
-    }
+    // if (!filter_var($friendsemail, FILTER_VALIDATE_EMAIL)) {
+    //   $friendsemailErr = "inserisci un indirizzo e-mail valido";
+    // }
   }
 
 }
