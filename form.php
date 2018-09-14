@@ -1,5 +1,6 @@
 <?php include 'inc/header.php';?>
 
+
 <!-- form entry and validation -->
 
 <?php 
@@ -62,10 +63,10 @@ function form_input($data) {
 ?>
 
       <h2 class="secondary_heading">Invia ad un'amica o un amico</h2>
-      <p class="subtitle_gray">condividi questo sito fantastico con le amiche o gli amici!</p>
+      <p class="subtitle_gray">Condividi questo sito fantastico con le amiche o gli amici!</p>
+      <p class="subtitle_gray">Facendo clic su INVIA accetti che questi dettagli vengano aggiunti alla nostra banca dati.</p>
       
       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-      <!-- if you replace action='filename' with "echo htmlspecialchars($_SERVER["PHP_SELF"]);", it will be more secure -->
       <ul>
         <li class="main_form">
           <label>Il tuo nome * </label>
@@ -94,21 +95,84 @@ function form_input($data) {
       
       <p class="main_form">
         <label></label>
-        <input type="image" src="images/submit.gif" name="submit" alt="submit button" />&nbspINVIA</p>
+        <input type="image" src="images/submit.gif" name="submit" alt="submit button" />&nbspINVIA        
+        <label></label>
       </form>
 
+<!-- database connection with debugging message -->
+
 <?php
-echo "<span style='font-style: italic; font-weight: bold;'>Il tuo ingresso: </span>";
-echo "<br>";
-echo $customername;
-echo "<br>";
-echo $customeremail;
-echo "<br>";
-echo $friendsname;
-echo "<br>";
-echo $friendsemail;
+
+// replace with name of database you are using:
+
+$mydatabase = "aziendacampione";
+
+$conn = mysqli_connect("localhost:8889", "root", "root", $mydatabase);
+
+// in production, comment out from here...
+
+  if (!$conn) {
+      echo "<br>";
+      echo "Error: Unable to connect to MySQL." . PHP_EOL;
+      echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+      echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+      exit;
+  }
+  echo "<br>";
+  echo "A connection was made to the $mydatabase database on MySQL!" . PHP_EOL;
+  echo "Host information: " . mysqli_get_host_info($conn) . PHP_EOL;
+
+// ...to here
 ?>
 
+<?php
 
+if(
+  (isset($_POST['customername'])&& $_POST['customername'] !='') && 
+  (isset($_POST['customeremail'])&& $_POST['customeremail'] !='') && 
+  (isset($_POST['friendsname'])&& $_POST['friendsname'] !='') && 
+  (isset($_POST['friendsemail'])&& $_POST['friendsemail'] !='')
+  )
+
+  {
+    $customername =  $conn->real_escape_string($_POST['customername']);
+    $customeremail =  $conn->real_escape_string($_POST['customeremail']);
+    $friendsname =  $conn->real_escape_string($_POST['friendsname']);
+    $friendsemail =  $conn->real_escape_string($_POST['friendsemail']);
+    
+    // replace with table you are writing to:
+
+    $mytable = "recommendations";
+
+    $sql = "INSERT INTO $mytable (customername, customeremail, friendsname, friendsemail)
+      VALUES ('".$customername."', '".$customeremail."', '".$friendsname."', '".$friendsemail."')";
+    
+    if(!$result = $conn->query($sql)){
+  die('There was an error running the query [' . $conn->error . ']');
+  }
+else
+  {
+    echo "<br>";
+    echo "<br>Grazie mille, $customername. Il tuo amico / la tua amica $friendsname è stato contattato/a.";
+    echo "<p>Questi sono i dati che hai aggiunto alla nostra banca dati:</p>";
+    echo "<br>";
+    echo "<span style='font-weight: bold;'>il tuo nome: </span>";
+    echo $customername;
+    echo "<br>";
+    echo "<span style='font-weight: bold;'>il tuo e-mail: </span>";
+    echo $customeremail;
+    echo "<br>";
+    echo "<span style='font-weight: bold;'>il nome del tuo amico / della tua amica: </span>";
+    echo $friendsname;
+    echo "<br>";
+    echo "<span style='font-weight: bold;'>il e-mail del tuo amico / della tua amica: </span>";
+    echo $friendsemail;
+    echo "<br>";
+    echo "<br>";
+    echo "<p>Puoi tornare indietro e inviare un altro amico, se lo desideri.</p>";
+
+  }
+} 
+?>
 
 <?php include 'inc/footer.php';?>
