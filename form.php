@@ -62,11 +62,18 @@ function form_input($data) {
 
 ?>
 
+      <script>
+        function clearForm()
+          {
+              document.getElementById("recommendation").reset();
+          }
+      </script>
+
       <h2 class="secondary_heading">Invia ad un'amica o un amico</h2>
       <p class="subtitle_gray">Condividi questo sito fantastico con le amiche o gli amici!</p>
       <p class="subtitle_gray">Facendo clic su INVIA accetti che questi dettagli vengano aggiunti alla nostra banca dati.</p>
       
-      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+      <form id="recommendation" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
       <ul>
         <li class="main_form">
           <label>Il tuo nome * </label>
@@ -93,10 +100,14 @@ function form_input($data) {
         </li>
       </ul>
       
+      <p class="main_form">      
+        <label></label>
+        <input type="button" onclick="clearForm();" value="repristinare">
+      </p>
       <p class="main_form">
         <label></label>
-        <input type="image" src="images/submit.gif" name="submit" alt="submit button" />&nbspINVIA        
-        <label></label>
+        <input type="image" src="images/submit.gif" name="submit" alt="submit button" />&nbspINVIA 
+      </p> 
       </form>
 
 <!-- database connection with debugging message -->
@@ -169,7 +180,7 @@ else
     echo $friendsemail;
     echo "<br>";
     echo "<br>";
-    print 'Puoi <a href="'. $_SERVER['PHP_SELF'] .'">ripristinare il modulo e inviare un altro amico / una altra amica</a>, se lo desideri.';
+    print 'Puoi <a href="'. $_SERVER['PHP_SELF'] .'">torna indietro e inviare un altro amico / una altra amica</a>, se lo desideri.';
 
   }
 } 
